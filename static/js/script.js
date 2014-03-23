@@ -12,6 +12,7 @@ $(function() {
 			if (data.length == 1) {
 				find_titles(data[0]['loc']);
 			} else if (data.length > 1) {
+				$('#results').append('<label>Multiple places found, please choose one</label>');
 				$.each(data, function(index, place) {
 					var $item = $('<a></a>')
 						.addClass('list-group-item')
@@ -23,7 +24,6 @@ $(function() {
 							find_titles(loc);
 						});
 					console.log($item);
-					$('#results').append('<label>Multiple places found, please choose one</label>');
 					$('#results').append($item);
 				});
 			} else {

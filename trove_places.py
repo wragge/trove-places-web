@@ -14,6 +14,7 @@ if MONGO_URL:
 	db = client.get_default_database()
 else:
 	client = MongoClient()
+	db = client['trove_places']
   	
 @app.route('/')
 def search():
