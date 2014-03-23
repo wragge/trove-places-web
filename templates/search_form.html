@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Find newspapers near a place</h1>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <label for="name">Place name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter place name">
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <select class="form-control" id="state">
+            <option>ACT</option>
+            <option>NSW</option>
+            <option>NT</option>
+            <option>QLD</option>
+            <option>SA</option>
+            <option>TAS</option>
+            <option>VIC</option>
+            <option>WA</option>
+          </select>
+        </div>
+        <button type="button" id="find" class="btn btn-primary">Find</button>
+      </form>
+      <div id="results" class="list-group">
+
+      </div>
+      <p class="text-muted">An early experiment in providing some sort of place-based interface to Trove newspapers.
+      </p>
+      <p class="text-muted">Just enter a place name and state and it will attempt return the ten nearest newspaper titles to that location.</p>
+      <p class="text-muted">Some of the metadata is still a bit dodgy. So use at your own risk.
+      </p>
+      <p class="text-muted">Created by Tim Sherratt (@wragge).
+      </p>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/script.js"></script>
+  </body>
+</html>
