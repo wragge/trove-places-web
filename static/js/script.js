@@ -23,6 +23,7 @@ $(function() {
 							find_titles(loc);
 						});
 					console.log($item);
+					$('#results').append('<label>Multiple places found, please choose one</label>');
 					$('#results').append($item);
 				});
 			} else {
