@@ -1,4 +1,5 @@
 import os
+from collections import OrderedDict
 from urlparse import urlparse
 from flask import Flask
 from flask import request
@@ -27,19 +28,20 @@ def get_place():
 	state = request.args.get('state', None)
 	if placename and state:
 		places = db.places
-		place = places.find({'name_lower': placename.lower(), 'state': state})
+		place = places.find({'name_lower': placename.lower(), 'state': state, 'display': 'y'})
 	return Response(dumps(place), mimetype='application/json')
 
 @app.route('/titles')
 def find_near_titles():
-	near_titles = []
+	results = []
 	lon = request.args.get('lon', None)
 	lat = request.args.get('lat', None)
 	if lon and lat:
 		titles = db.titles
 		titles.ensure_index([('places.loc', GEO2D)], min=-500, max=500)
-		near_titles = titles.find({"places.loc": {"$near": [float(lon), float(lat)]}}).limit(10)
-	return Response(dumps(near_titles), mimetype='application/json')
+		near_titles = titles.find({"places.loc": {"$near": [float(lon), float(lat)]}}).limit(20)
+		results = OrderedDict((v['_id'], v) for v in near_titles).values()
+	return Response(dumps(results[:10]), mimetype='application/json')
 
 if __name__ == '__main__':
     app.run(debug=True)
