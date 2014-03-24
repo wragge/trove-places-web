@@ -1,14 +1,15 @@
 $(function() {
 	$('#find').click(function() {
-		$('#results').empty();
 		find_place();
 		return false;
 	});
 
 	function find_place() {
+		$('#results').empty().append('<p class="text-muted">Loading...</p>');
 		var params = {'name': $('#name').val(), 'state': $('#state').val()};
 		$.getJSON('/places', params, function(data) {
 			console.log(data.length);
+			$('#results').empty();
 			if (data.length == 1) {
 				find_titles(data[0]['loc']);
 			} else if (data.length > 1) {
@@ -33,9 +34,10 @@ $(function() {
 	}
 
 	function find_titles(loc) {
-		$('#results').empty();
+		$('#results').empty().append('<p class="text-muted">Loading...</p>');
 		var params = {'lon': loc[0], 'lat': loc[1]};
 		$.getJSON('/titles', params, function(data) {
+			$('#results').empty();
 			$.each(data, function(index, title) {
 				var $item = $('<a></a>')
 						.addClass('list-group-item')
